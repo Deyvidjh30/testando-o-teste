@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Painel Administrativo</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/admin.css' %}" />
+    <link rel="stylesheet" href="../static/css/admin.css" />
   </head>
   <body>
     <aside class="sidebar">
@@ -18,11 +17,11 @@
       </header>
 
       <nav class="menu">
-        <a href="{% url 'feed' %}" class="menu-link">▤ Feed</a>
-        <a href="{% url 'admin_panel' %}" class="menu-link active">▦ Painel Administrativo</a>
+        <a href="/feed" class="menu-link">▤ Feed</a>
+        <a href="admin.html" class="menu-link active">▦ Painel Administrativo</a>
       </nav>
 
-      <a href="{% url 'login' %}" class="logout">⇱ Sair</a>
+      <a href="login.html" class="logout">⇱ Sair</a>
     </aside>
 
     <main class="admin-page">
@@ -30,7 +29,7 @@
 
       <section class="stat-card" aria-label="Total de membros cadastrados">
         <span>Membros</span>
-        <strong id="member-count">{{ total_usuarios }}</strong>
+        <strong id="member-count">0</strong>
       </section>
 
       <section class="panel promote-panel">
@@ -38,7 +37,7 @@
         <form id="promote-form" class="promote-form">
           <label>
             <span>Matrícula</span>
-            <input id="promote-user" type="text" placeholder="Digite a matrícula..." list="member-options" required />
+            <input id="promote-user" type="text" placeholder="Digite o nome..." list="member-options" required />
             <datalist id="member-options"></datalist>
           </label>
 
@@ -66,6 +65,6 @@
       </section>
     </main>
 
-    <script src="{% static 'js/admin.js' %}"></script>
+    <script src="../static/js/admin.js"></script>
   </body>
 </html>

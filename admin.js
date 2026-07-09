@@ -1,10 +1,17 @@
+const ADMIN_USER = {
+  login: 'admin',
+  password: 'admin123',
+  role: 'admin',
+  redirectTo: 'admin.html'
+};
+
 const MEMBERS_KEY = 'members_database';
 
 const initialMembers = [
-  { id: 202410, matricula: '202410', name: 'Vitor', area: 'Dança', subLeader: true },
-  { id: 202411, matricula: '202411', name: 'M. Eduarda', area: 'Roteiro - Figurino', subLeader: false },
-  { id: 202412, matricula: '202412', name: 'Ana Clara', area: 'Staff', subLeader: false },
-  { id: 202413, matricula: '202413', name: 'João Pedro', area: 'Comunicação', subLeader: false }
+  { id: 202410, name: 'Vitor', area: 'Dança', subLeader: true },
+  { id: 202411, name: 'M. Eduarda', area: 'Roteiro - Figurino', subLeader: false },
+  { id: 202412, name: 'Ana Clara', area: 'Staff', subLeader: false },
+  { id: 202413, name: 'João Pedro', area: 'Comunicação', subLeader: false }
 ];
 
 let members = getMembersFromDatabase();
@@ -20,8 +27,8 @@ const memberOptions = document.querySelector('#member-options');
 promoteForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  const typedMatricula = promoteUser.value.trim();
-  const selectedMember = members.find((member) => member.matricula === typedMatricula);
+  const typedName = promoteUser.value.trim().toLowerCase();
+  const selectedMember = members.find((member) => member.name.toLowerCase() === typedName);
 
   if (!selectedMember) {
     alert('Usuário não encontrado.');
@@ -53,7 +60,7 @@ function renderMembers() {
   const visibleMembers = members.filter((member) => member.name.toLowerCase().includes(searchTerm));
 
   memberCount.textContent = members.length;
-  memberOptions.innerHTML = members.map((member) => `<option value="${member.matricula}">${member.name}</option>`).join('');
+  memberOptions.innerHTML = members.map((member) => `<option value="${member.name}"></option>`).join('');
   memberList.innerHTML = visibleMembers.map(createMemberRow).join('');
 
   document.querySelectorAll('.remove-button').forEach((button) => {
@@ -73,7 +80,7 @@ function createMemberRow(member) {
       <div class="member-avatar">${member.name.charAt(0)}</div>
       <div>
         <strong>${member.name}</strong>${subLeaderTag}
-        <small>${member.matricula} - ${member.area}</small>
+        <small>${member.id} - ${member.area}</small>
       </div>
       <button class="remove-button" data-id="${member.id}">Remover</button>
     </article>
