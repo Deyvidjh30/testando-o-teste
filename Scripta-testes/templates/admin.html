@@ -1,0 +1,94 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <header class="profile">
+        <div class="profile-avatar">T</div>
+        <div>
+          <strong>Admin</strong>
+          <span>DIATINF - Líder</span>
+        </div>
+      </header>
+
+      <nav class="menu">
+        <a href="{% url 'feed' %}" class="menu-link">▤ Feed</a>
+        <a href="{% url 'admin_panel' %}" class="menu-link active">▦ Painel Administrativo</a>
+      </nav>
+
+      <a href="{% url 'login' %}" class="logout">⇱ Sair</a>
+    </aside>
+
+    <main class="admin-page">
+      <h1>Painel Administrativo</h1>
+
+      <section class="stat-card" aria-label="Total de membros cadastrados">
+        <span>Membros</span>
+        <strong id="member-count">{{ total_usuarios }}</strong>
+      </section>
+
+      <section class="panel promote-panel">
+        <h2>▣ Promover Sub-Líderes</h2>
+        <form method="post" class="promote-form">
+          {% csrf_token %}
+          <input type="hidden" name="acao" value="promover" />
+          <label>
+            <span>Matrícula</span>
+            <input name="matricula" type="text" inputmode="numeric" placeholder="Digite a matrícula..." list="member-options" required />
+            <datalist id="member-options">
+              {% for usuario in usuarios %}
+                <option value="{{ usuario.matricula }}">{{ usuario.nome }}</option>
+              {% endfor %}
+            </datalist>
+          </label>
+
+          <label>
+            <span>Áreas</span>
+            <select name="area">
+              <option>Staff</option>
+              <option>Dança</option>
+              <option>Roteiro - Figurino</option>
+              <option>Comunicação</option>
+            </select>
+          </label>
+
+          <button type="submit">Promover</button>
+        </form>
+      </section>
+
+      <section class="panel members-panel">
+        <div class="members-title">
+          <h2>♚ Membros</h2>
+          <input id="member-search" type="search" placeholder="Pesquisar membros" />
+        </div>
+
+        <div id="member-list" class="member-list">
+          {% for usuario in usuarios %}
+            <article class="member-row" data-search="{{ usuario.nome }} {{ usuario.matricula }}">
+              <div class="member-avatar">{{ usuario.nome|first }}</div>
+              <div>
+                <strong>{{ usuario.nome }}</strong>
+                {% if usuario.sub_lider %}<span class="tag">Sub-Líder</span>{% endif %}
+                <small>{{ usuario.matricula }} - {{ usuario.area }}</small>
+              </div>
+              <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="acao" value="remover" />
+                <input type="hidden" name="matricula" value="{{ usuario.matricula }}" />
+                <button class="remove-button" type="submit">Remover</button>
+              </form>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+
+    <script src="{% static 'js/admin.js' %}"></script>
+  </body>
+</html>

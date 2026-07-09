@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+  <body>
+    <main class="auth-card">
+      <h1>Cadastro</h1>
+      <form method="post">
+        {% csrf_token %}
+        <label>Nome<input name="nome" type="text" required /></label>
+        <label>Matrícula<input name="matricula" type="text" required /></label>
+        <label>Senha<input name="senha" type="password" required /></label>
+        <button type="submit">Cadastrar</button>
+      </form>
+      <a href="{% url 'login' %}">Voltar para login</a>
+    </main>
+  </body>
+</html>
