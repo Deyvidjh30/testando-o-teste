@@ -12,8 +12,9 @@
       <h1>Login</h1>
       <form method="post">
         {% csrf_token %}
-        <label>Matrícula<input name="matricula" type="text" required /></label>
+        <label>Matrícula<input name="matricula" type="text" inputmode="numeric" pattern="[0-9]+" required /></label>
         <label>Senha<input name="senha" type="password" required /></label>
+        {% if erro %}<small>{{ erro }}</small>{% endif %}
         <button type="submit">Entrar</button>
       </form>
       <a href="{% url 'cadastro' %}">Criar cadastro</a>

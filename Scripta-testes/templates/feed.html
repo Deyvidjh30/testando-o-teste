@@ -11,6 +11,7 @@
     <main class="auth-card">
       <h1>Feed</h1>
       <p>Feed geral dos usuários.</p>
+      {% if usuario.admin %}<a href="{% url 'admin_panel' %}">Painel Administrativo</a>{% endif %}
     </main>
   </body>
 </html>
