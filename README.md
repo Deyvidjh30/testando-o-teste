@@ -1,25 +1,17 @@
 # testando-o-teste
 
-Painel administrativo com a estrutura de páginas separada em `templates`, `static/css` e `static/js`.
+Painel administrativo estático para ser aberto quando o login existente identificar o usuário administrador.
 
-## Login admin definido
+## Admin definido no banco
 
-Use estes dados para entrar como administrador:
+Use estes dados no banco/seed do login já existente:
 
-- Matrícula: `202400`
+- Login: `admin`
 - Senha: `admin123`
-- Página após login: `templates/admin.html`
+- Perfil: `admin`
+- Redirecionamento após login: `admin.html`
 
-O login usa matrícula, não nome. O link **Feed** do menu administrativo aponta para `/feed`, para reaproveitar o mesmo feed usado pelo usuário comum.
-
-## Estrutura
-
-- `templates/login.html`
-- `templates/admin.html`
-- `static/css/login.css`
-- `static/css/admin.css`
-- `static/js/login.js`
-- `static/js/admin.js`
+O link **Feed** do menu aponta para `/feed`, para reaproveitar o mesmo feed usado pelo usuário comum.
 
 ## Como visualizar
 
@@ -27,4 +19,4 @@ O login usa matrícula, não nome. O link **Feed** do menu administrativo aponta
 python3 -m http.server 4173
 ```
 
-Depois acesse `http://localhost:4173/templates/login.html`.
+Depois acesse `http://localhost:4173/admin.html`.
