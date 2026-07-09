@@ -1,11 +1,22 @@
 # testando-o-teste
 
-Painel administrativo com a estrutura de arquivos no lugar certo.
+Painel administrativo estático para ser aberto quando o login existente identificar o usuário administrador.
 
-## Estrutura
+## Admin definido no banco
 
-- `templates/admin.html`
-- `static/css/admin.css`
-- `static/js/admin.js`
+Use estes dados no banco/seed do login já existente:
 
-O login/cadastro existente deve continuar sendo usado pelo projeto. Para o admin, use matrícula `202400`, senha `admin123` e redirecione para `templates/admin.html`.
+- Login: `admin`
+- Senha: `admin123`
+- Perfil: `admin`
+- Redirecionamento após login: `admin.html`
+
+O link **Feed** do menu aponta para `/feed`, para reaproveitar o mesmo feed usado pelo usuário comum.
+
+## Como visualizar
+
+```bash
+python3 -m http.server 4173
+```
+
+Depois acesse `http://localhost:4173/admin.html`.
