@@ -32,3 +32,5 @@ Quando entrar com esses dados, o sistema vai direto para o painel administrativo
 ## Observação para novo PR
 
 As alterações do painel admin, login por matrícula, cadastro e feed estão reunidas neste repositório para abrir um novo PR com tudo junto.
+
+Novo PR solicitado para reenviar as mesmas alterações completas.
