@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/login.css" />
+  </head>
+  <body>
+    <main class="login-page">
+      <section class="login-card">
+        <div class="profile-avatar">T</div>
+        <h1>Entrar</h1>
+        <p>Use a matrícula e senha cadastradas para acessar.</p>
+
+        <form id="login-form">
+          <label>
+            Matrícula
+            <input id="matricula" type="text" inputmode="numeric" placeholder="Digite sua matrícula" required />
+          </label>
+
+          <label>
+            Senha
+            <input id="password" type="password" placeholder="Digite sua senha" required />
+          </label>
+
+          <button type="submit">Entrar</button>
+          <small id="login-error" role="alert"></small>
+        </form>
+      </section>
+    </main>
+
+    <script src="../static/js/login.js"></script>
+  </body>
+</html>
