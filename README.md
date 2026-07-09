@@ -1,17 +1,22 @@
 # testando-o-teste
 
-Projeto Django com login, cadastro, feed e painel administrativo na estrutura correta.
+Painel administrativo estático para ser aberto quando o login existente identificar o usuário administrador.
 
-## Estrutura principal
+## Admin definido no banco
 
-- `Scripta-testes/templates/` para páginas HTML.
-- `Scripta-testes/static/css/` para CSS.
-- `Scripta-testes/static/js/` para JavaScript.
-- `Scripta-testes/scripta/` para o projeto Django.
+Use estes dados no banco/seed do login já existente:
 
-## Login admin
-
-- Matrícula: `202400`
+- Login: `admin`
 - Senha: `admin123`
+- Perfil: `admin`
+- Redirecionamento após login: `admin.html`
 
-Ao entrar com esses dados, o login redireciona para o painel administrativo. Outros logins seguem para o feed.
+O link **Feed** do menu aponta para `/feed`, para reaproveitar o mesmo feed usado pelo usuário comum.
+
+## Como visualizar
+
+```bash
+python3 -m http.server 4173
+```
+
+Depois acesse `http://localhost:4173/admin.html`.
